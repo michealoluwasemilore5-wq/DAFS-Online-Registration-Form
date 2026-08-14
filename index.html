@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Destiny Achievers Foundation School - Online Student Registration">
+  <title>DAFS | Online Student Registration</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="payment-provider" content="Paystack">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"><img src="dafs-logo.png" alt="DAFS logo"></div>
+      <div>
+        <strong>Destiny Achievers</strong>
+        <span>Foundation School</span>
+      </div>
+    </div>
+    <a class="admin-link" href="#registration">Register</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">ONLINE ADMISSION 2026/2027</span>
+        <h1>Start your child's journey with <span>DAFS.</span></h1>
+        <p>Complete the online registration form below. Our school team will review the application and contact the parent or guardian using the details provided.</p>
+        <div class="hero-points">
+          <div><b>01</b><span>Complete the form</span></div>
+          <div><b>02</b><span>Submit application</span></div>
+          <div><b>03</b><span>Await confirmation</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="seal">★</div>
+        <h2>Knowledge is Lightening</h2>
+        <p>Destiny Achievers Foundation School</p>
+        <small>16B Pipeline Way, Tajubelo Bus Stop, Iju-Ishaga, Lagos</small>
+      </div>
+    </section>
+
+    <section class="registration" id="registration">
+      <div class="section-heading">
+        <span class="eyebrow">STUDENT REGISTRATION</span>
+        <h2>Admission Application Form</h2>
+        <p>Fields marked <span>*</span> are required.</p>
+      </div>
+
+      <form id="registrationForm" novalidate>
+        <div class="form-section">
+          <h3>Student Information</h3>
+          <div class="grid two">
+            <label>First Name *<input name="firstName" required autocomplete="given-name"></label>
+            <label>Last Name *<input name="lastName" required autocomplete="family-name"></label>
+            <label>Other Name<input name="otherName"></label>
+            <label>Date of Birth *<input type="date" name="dateOfBirth" required></label>
+            <label>Gender *
+              <select name="gender" required>
+                <option value="">Select gender</option>
+                <option>Male</option><option>Female</option>
+              </select>
+            </label>
+            <label>Class Applying For *
+              <select name="classApplying" required>
+                <option value="">Select class</option>
+                <option>Creche</option><option>Nursery 1</option><option>Nursery 2</option>
+                <option>Nursery 3</option><option>Primary 1</option><option>Primary 2</option>
+                <option>Primary 3</option><option>Primary 4</option><option>Primary 5</option>
+                <option>Primary 6</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Parent / Guardian Information</h3>
+          <div class="grid two">
+            <label>Parent/Guardian Full Name *<input name="guardianName" required autocomplete="name"></label>
+            <label>Phone Number *<input type="tel" name="phone" required autocomplete="tel" placeholder="08012345678"></label>
+            <label>Email Address<input type="email" name="email" autocomplete="email"></label>
+            <label>Relationship to Student *
+              <select name="relationship" required>
+                <option value="">Select relationship</option>
+                <option>Parent</option><option>Guardian</option><option>Other</option>
+              </select>
+            </label>
+            <label class="full">Home Address *<textarea name="address" required rows="3"></textarea></label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>School Information</h3>
+          <div class="grid two">
+            <label>Previous School<input name="previousSchool"></label>
+            <label>Previous Class<input name="previousClass"></label>
+            <label class="full">Additional Information<textarea name="additionalInfo" rows="4" placeholder="Anything the school should know?"></textarea></label>
+          </div>
+        </div>
+
+        <div class="consent">
+          <label class="check">
+            <input type="checkbox" id="consent" required>
+            <span>I confirm that the information supplied is accurate and I am submitting this application on behalf of the student. *</span>
+          </label>
+        </div>
+
+        <div class="payment-note">Registration form fee: <strong>₦1,000</strong>. Your application will only be submitted after Paystack confirms successful payment.</div>
+
+        <div id="formMessage" class="message" role="status"></div>
+
+        <button class="submit-btn" type="submit" id="submitBtn">
+          <span>Pay ₦1,000 &amp; Submit Registration</span>
+          <span class="arrow">→</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="contact">
+      <div>
+        <span class="eyebrow">NEED HELP?</span>
+        <h2>Contact Destiny Achievers Foundation School</h2>
+        <p>For admission enquiries, please contact the school office.</p>
+      </div>
+      <div class="contact-card">
+        <strong>School Address</strong>
+        <span>16B Pipeline Way, Tajubelo Bus Stop, Iju-Ishaga, Lagos</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Destiny Achievers Foundation School. All rights reserved.</p>
+    <span>Knowledge is Lightening</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

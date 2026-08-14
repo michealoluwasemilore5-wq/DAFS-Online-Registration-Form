@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DAFS | Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="loginView" class="center-wrap">
+    <div class="login-card">
+      <div class="brand-mark"><img src="dafs-logo.png" alt="DAFS logo"></div>
+      <span class="eyebrow">ADMINISTRATION</span>
+      <h1>Admin Login</h1>
+      <p>Sign in to view student registration applications.</p>
+      <form id="loginForm">
+        <label>Username<input id="username" autocomplete="username" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+        <div id="loginMessage" class="message"></div>
+        <button type="submit">Sign In <span>→</span></button>
+      </form>
+    </div>
+  </div>
+
+  <div id="dashboardView" class="hidden">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark small"><img src="dafs-logo.png" alt="DAFS logo"></div>
+        <div><strong>Destiny Achievers</strong><span>Foundation School</span></div>
+      </div>
+      <div class="top-actions">
+        <span id="adminName"></span>
+        <button id="logoutBtn" class="ghost">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <div class="heading-row">
+        <div>
+          <span class="eyebrow">SCHOOL ADMINISTRATION</span>
+          <h1>Registration Dashboard</h1>
+          <p>View and manage submitted admission applications.</p>
+        </div>
+        <button id="refreshBtn" class="primary">↻ Refresh</button>
+      </div>
+
+      <section class="stats">
+        <div class="stat"><span>Total Applications</span><strong id="totalCount">0</strong></div>
+        <div class="stat"><span>Applications Today</span><strong id="todayCount">0</strong></div>
+        <div class="stat"><span>Latest Application</span><strong id="latestId">—</strong></div>
+      </section>
+
+      <section class="panel">
+        <div class="toolbar">
+          <div>
+            <h2>Student Applications</h2>
+            <span id="lastUpdated"></span>
+          </div>
+          <input id="search" class="search" placeholder="Search name, ID, class, phone...">
+        </div>
+        <div id="errorMessage" class="message"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Application</th><th>Student</th><th>Class</th><th>Guardian</th><th>Phone</th><th>Submitted</th><th></th></tr></thead>
+            <tbody id="registrationRows"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="empty hidden">No registrations found.</div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <button id="closeModal" class="close" aria-label="Close">×</button>
+      <span class="eyebrow">APPLICATION DETAILS</span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalDetails" class="details"></div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
