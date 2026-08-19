@@ -6,8 +6,33 @@
   <meta name="robots" content="noindex,nofollow">
   <title>DAFS | Admin Dashboard</title>
   <link rel="stylesheet" href="admin.css">
+<style id="dafs-admin-loader-css">
+#dafs-admin-loader{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#071b12,#0b3d27,#062117);font-family:Arial,Helvetica,sans-serif;transition:opacity .45s ease,visibility .45s ease}
+#dafs-admin-loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+#dafs-admin-loader .box{text-align:center;width:min(90vw,430px);padding:30px 24px}
+#dafs-admin-loader .logo{width:82px;height:82px;margin:0 auto 20px;border-radius:50%;object-fit:contain;background:#fff;padding:7px}
+#dafs-admin-loader .brand{color:#fff;font-size:24px;font-weight:800;letter-spacing:1px;margin-bottom:7px}
+#dafs-admin-loader .sub{color:rgba(255,255,255,.78);font-size:13px;margin-bottom:27px}
+#dafs-admin-loader .spinner{width:38px;height:38px;margin:0 auto 17px;border:3px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:dafsAdminSpin .8s linear infinite}
+#dafs-admin-loader .status{color:#fff;font-size:13px;min-height:20px}
+#dafs-admin-loader .bar{height:4px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden;margin-top:16px}
+#dafs-admin-loader .bar i{display:block;width:0;height:100%;background:#fff;border-radius:10px;animation:dafsAdminProgress 2.8s ease-in-out infinite}
+@keyframes dafsAdminSpin{to{transform:rotate(360deg)}} @keyframes dafsAdminProgress{0%{width:0}55%{width:72%}100%{width:94%}}
+</style>
 </head>
 <body>
+<div id="dafs-admin-loader" aria-live="polite">
+<div class="box"><img class="logo" id="dafs-admin-logo" src="" alt="DAFS">
+<div class="brand">DAFS ADMIN PORTAL</div><div class="sub">Preparing secure administration dashboard</div>
+<div class="spinner"></div><div class="status" id="dafs-admin-status">Connecting to the administration portal…</div>
+<div class="bar"><i></i></div></div></div>
+<script id="dafs-admin-loader-js">(function(){var l=document.getElementById('dafs-admin-loader');if(!l)return;
+var s=document.getElementById('dafs-admin-status'),logo=document.getElementById('dafs-admin-logo'),imgs=document.querySelectorAll('img');
+for(var i=0;i<imgs.length;i++){var x=imgs[i].getAttribute('src')||'';if(x&&!x.startsWith('data:')){logo.src=x;break;}}
+if(!logo.src)logo.style.display='none';var a=['Connecting to the administration portal…','Loading secure admin dashboard…','Almost ready…'],n=0,t=setInterval(function(){if(s)s.textContent=a[n++%a.length]},1000);
+function done(){clearInterval(t);if(s)s.textContent='Admin portal ready';setTimeout(function(){l.classList.add('hide')},180)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',done,{once:true});else done();setTimeout(done,7000)})();</script>
+
   <div id="loginView" class="center-wrap">
     <div class="login-card">
       <div class="brand-mark"><img src="dafs-logo.png" alt="DAFS logo"></div>
