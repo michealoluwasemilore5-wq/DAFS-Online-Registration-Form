@@ -7,8 +7,85 @@
   <title>DAFS | Online Student Registration</title>
   <link rel="stylesheet" href="styles.css">
   <meta name="payment-provider" content="Paystack">
+
+<style id="dafs-page-loader-css">
+#dafs-page-loader{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(145deg,#071b12 0%,#0b3d27 55%,#062117 100%);font-family:Arial,Helvetica,sans-serif;
+opacity:1;visibility:visible;transition:opacity .45s ease,visibility .45s ease}
+#dafs-page-loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+#dafs-page-loader .box{text-align:center;width:min(90vw,420px);padding:30px 24px}
+#dafs-page-loader .logo{width:88px;height:88px;margin:0 auto 20px;border-radius:50%;object-fit:contain;
+background:#fff;padding:7px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+#dafs-page-loader .brand{color:#fff;font-size:25px;font-weight:800;letter-spacing:1.4px;margin-bottom:8px}
+#dafs-page-loader .sub{color:rgba(255,255,255,.78);font-size:14px;margin-bottom:28px}
+#dafs-page-loader .spinner{width:38px;height:38px;margin:0 auto 18px;border:3px solid rgba(255,255,255,.2);
+border-top-color:#fff;border-radius:50%;animation:dafsSpin .8s linear infinite}
+#dafs-page-loader .status{color:#fff;font-size:13px;min-height:20px}
+#dafs-page-loader .bar{height:4px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden;margin-top:16px}
+#dafs-page-loader .bar i{display:block;width:0;height:100%;background:#fff;border-radius:10px;animation:dafsProgress 2.8s ease-in-out infinite}
+@keyframes dafsSpin{to{transform:rotate(360deg)}} @keyframes dafsProgress{0%{width:0}55%{width:72%}100%{width:94%}}
+@media(max-width:480px){#dafs-page-loader .box{padding:24px 18px}.brand{font-size:22px!important}.logo{width:76px!important;height:76px!important}}
+</style>
+
 </head>
 <body>
+
+<div id="dafs-page-loader" aria-live="polite" aria-label="Loading DAFS Online Registration">
+  <div class="box">
+    <img class="logo" id="dafs-loader-logo" src="" alt="DAFS">
+    <div class="brand">DESTINY ACHIEVERS FOUNDATION SCHOOL</div>
+    <div class="sub">Online Registration Portal</div>
+    <div class="spinner"></div>
+    <div class="status" id="dafs-loader-status">Preparing your registration portal…</div>
+    <div class="bar"><i></i></div>
+  </div>
+</div>
+
+
+<script id="dafs-page-loader-js">
+(function(){
+  var loader=document.getElementById('dafs-page-loader');
+  if(!loader) return;
+  var status=document.getElementById('dafs-loader-status');
+  var logo=document.getElementById('dafs-loader-logo');
+
+  // Reuse the first suitable image already present in the page so no backend/assets are changed.
+  var imgs=document.querySelectorAll('img');
+  for(var i=0;i<imgs.length;i++){
+    var s=imgs[i].getAttribute('src')||'';
+    if(s && !s.startsWith('data:')) { logo.src=s; break; }
+  }
+  if(!logo.src) logo.style.display='none';
+
+  var messages=[
+    'Preparing your registration portal…',
+    'Loading DAFS Online Registration…',
+    'Almost ready…'
+  ];
+  var n=0;
+  var timer=setInterval(function(){
+    if(status){ status.textContent=messages[n%messages.length]; n++; }
+  },1100);
+
+  function finish(){
+    clearInterval(timer);
+    if(status) status.textContent='Welcome to DAFS Online Registration';
+    setTimeout(function(){ loader.classList.add('hide'); },220);
+  }
+
+  // Frontend-only: wait until the document is ready, then reveal it.
+  // No API route, database, Paystack, authentication, or server code is changed.
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', finish, {once:true});
+  } else {
+    finish();
+  }
+
+  // Safety fallback so the loader can never trap the user.
+  setTimeout(finish, 7000);
+})();
+</script>
+
   <header class="topbar">
     <div class="brand">
       <div class="logo"><img src="dafs-logo.png" alt="DAFS logo"></div>
